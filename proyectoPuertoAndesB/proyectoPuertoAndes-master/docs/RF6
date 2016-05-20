@@ -1,0 +1,89 @@
+REQUERIMIENTO FUNCIONAL 6
+
+// TABLAS:
+
+  - CARGA:
+    ID: SA
+    VOLUMEN: INT
+
+    - GENERAL:
+      ID: SA
+      PESO: INT
+      MARCA: STRING
+
+    - GRANEL:
+      ID: SA
+      TIPO_CONTENIDO: STRING
+
+    - CONTENEDOR:
+      ID: SA
+
+  - BUQUE:
+    ID: SA
+    NOMBRE: STRING
+    CAPACIDAD: STRING
+    REGISTRO_CAPITANIA: STRING
+    AGENTE_MARITIMO: STRING
+    TIPO_BUQUE: STRING
+    ESTADO: STRING
+
+    - PORTACONTENEDOR:
+      ID: SA
+      CAPACIDAD_CONTENEDORES: INT
+
+    - MULTIPROPOSITO:
+      ID: SA
+
+    - RORO
+      ID: SA
+
+  - INGRESO_SALIDA_AREA:
+    ID: SA
+    ID_CARGA: INT
+    ID_AREA: INT
+    VIENE_DE: STRING
+    FECHA_INGRESO: DATE
+    FECHA_SALIDA: DATE
+    ID_IMPORTADOR: INT
+
+  - CARGA_RESERVADA_BUQUE:
+    ID_CARGA: INT
+    ID_BUQUE: INT
+    FECHA_INICIO: DATE
+    FECHA_FIN: DATE
+
+// SQL:
+
+  - UPDATE INGRESO_SALIDA_AREA SET FECHA_SALIDA=X WHERE ID_CARGA=PC AND FECHA_SALIDA IS NULL AND VIENE_DE="CAMION";
+
+  - UPDATE CARGA_RESERVADA_BUQUE SET FECHA_INICIO=X WHERE ID_CARGA=PC AND ID_BUQUE=PB AND FECHA_INICIO IS NULL;
+
+// JSON:
+
+    // OBJETOS: CARGA, BUQUE
+    {
+      "id":"_",
+      "volumen":"_",
+      "fecha-ingreso":"_",
+      "fecha-salida":"_",
+      "id-responsable":"_",
+      "viene-de":"_",
+      "id-buque":"_",
+      "id-camion":"_"
+    },
+    {
+      "id":"_",
+      "nombre":"_",
+      "capacidad":"_",
+      "registro-capitania":"_",
+      "agente-maritimo":"_",
+      "tipo-buque":"_"
+    }
+
+    // WRAPPER: RegistroCargaBuque
+    {
+      "id-carga":"_",
+      "id-buque":"_",
+      "fecha-salida":"_",
+      "viene-de":"_"
+    }
